@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: sur4463
+    runtime: python
+    plan: free
+    buildCommand: >-
+      apt-get update &&
+      apt-get install -y gdal-bin libgdal-dev &&
+      pip install -r requirements.txt
+    startCommand: >-
+      streamlit run Home.py
+      --server.port $PORT
+      --server.address 0.0.0.0
+      --server.headless true
+      --browser.gatherUsageStats false
